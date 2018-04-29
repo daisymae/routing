@@ -16,12 +16,16 @@ import { ServersService } from './servers/servers.service';
 /* set up routes; This does nothing until registered */
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'users', component: UsersComponent },
+  { path: 'users', component: UsersComponent, children: [
+    { path: ':id/:name', component: UserComponent }
+  ] },
   /* : indicates dynamic parameter */
-  { path: 'users/:id/:name', component: UserComponent },
-  { path: 'servers', component: ServersComponent },
-  { path: 'servers/:id', component: ServerComponent },
-  { path: 'servers/:id/edit', component: EditServerComponent },
+  {
+    path: 'servers', component: ServersComponent, children: [
+      { path: ':id', component: ServerComponent },
+      { path: ':id/edit', component: EditServerComponent }
+    ]
+  },
 ];
 
 @NgModule({
