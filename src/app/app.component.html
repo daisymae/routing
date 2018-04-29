@@ -2,7 +2,15 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a routerLink="/">Home</a></li>
+        <!-- routerLinkActive can be on the li or the a and may depend on CSS library in use
+          routerLinkActive will mark ALL paths in the path as active;
+          '/' is part of all paths, so is always marked as active
+          setting the routerLinkActiveOptions will remove this issue
+        -->
+        <li role="presentation"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/">Home</a></li>
         <!-- could do the following, BUT will RELOAD everytime select link; RESTARTS app -->
         <!-- <li role="presentation"><a href="/servers">Servers</a></li> -->
         <!-- user routerLink instead -->
@@ -12,12 +20,12 @@
           ./ will work like relative paths
           ../ will go back a path
         -->
-        <li role="presentation"><a routerLink="servers">Servers</a></li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="servers">Servers</a></li>
         <!-- an example of routerLink as a property binding;
           using array, but could be just a string in ''
           if had /users/something, could have the 'something' as a second path element
         -->
-        <li role="presentation"><a [routerLink]="['users']">Users</a></li>
+        <li role="presentation" routerLinkActive="active"><a [routerLink]="['users']">Users</a></li>
       </ul>
     </div>
   </div>
