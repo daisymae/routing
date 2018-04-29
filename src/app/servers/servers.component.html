@@ -10,7 +10,7 @@
       <!-- update to use dynamic data -->
       <a
         [routerLink]="['/servers', server.id]"
-        [queryParams]="{allowEdit: '1'}"
+        [queryParams]="{allowEdit: server.id === 3 ? '1' : '0'}"
         fragment="loading"
         href="#"
         class="list-group-item"
