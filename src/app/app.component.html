@@ -6,12 +6,18 @@
         <!-- could do the following, BUT will RELOAD everytime select link; RESTARTS app -->
         <!-- <li role="presentation"><a href="/servers">Servers</a></li> -->
         <!-- user routerLink instead -->
-        <li role="presentation"><a routerLink="/servers">Servers</a></li>
+        <!-- can use relative paths here (no leading /) because on root 
+          relative paths will be appended to the current route
+          absolute paths are always connected to the root
+          ./ will work like relative paths
+          ../ will go back a path
+        -->
+        <li role="presentation"><a routerLink="servers">Servers</a></li>
         <!-- an example of routerLink as a property binding;
           using array, but could be just a string in ''
           if had /users/something, could have the 'something' as a second path element
         -->
-        <li role="presentation"><a [routerLink]="['/users']">Users</a></li>
+        <li role="presentation"><a [routerLink]="['users']">Users</a></li>
       </ul>
     </div>
   </div>
