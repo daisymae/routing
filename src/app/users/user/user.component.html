@@ -1,2 +1,8 @@
 <p>User with ID {{ user.id }} loaded.</p>
 <p>User name is {{ user.name }}</p>
+<hr>
+<!-- this doesn't work because already on the component
+so component isn't re-rendered; need to update component to 
+react to changes
+-->
+<a [routerLink]="['/users', 10, 'Anna']">Load Anna (10)</a>
