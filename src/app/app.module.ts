@@ -12,8 +12,12 @@ import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-/* set up routes; This does nothing until registered */
+/* set up routes; This does nothing until registered
+   ** route is a catch-all for any route that may be wrong
+   make sure this is the LAST route
+*/
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'users', component: UsersComponent, children: [
@@ -26,6 +30,8 @@ const appRoutes: Routes = [
       { path: ':id/edit', component: EditServerComponent }
     ]
   },
+  { path: 'not-found', component: PageNotFoundComponent},
+  { path: '**', redirectTo: '/not-found'}
 ];
 
 @NgModule({
@@ -36,7 +42,8 @@ const appRoutes: Routes = [
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
