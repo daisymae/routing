@@ -41,6 +41,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [
+    // RouterModule.forRoot(appRoutes, {useHash: true}) // support older browsers/server
     RouterModule.forRoot(appRoutes) // now routes registered
   ],
   exports: [RouterModule]
