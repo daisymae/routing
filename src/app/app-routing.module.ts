@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AuthGuard } from './auth-guard.service';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ServerResolverService } from './servers/server/server-resolver.service';
 
 /* set up routes; This does nothing until registered
    ** route is a catch-all for any route that may be wrong
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     canActivateChild: [AuthGuard],
     component: ServersComponent,
     children: [
-      { path: ':id', component: ServerComponent },
+      // the data from the resolver will be available in the property mapped to the resolver; in this case 'server'
+      { path: ':id', component: ServerComponent, resolve: {server: ServerResolverService} },
       { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] }
     ]
   },
