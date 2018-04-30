@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { ServersService } from '../servers/servers.service';
+import { ServersService } from '../../servers/servers.service';
 import { Observable } from 'rxjs/Observable';
 
 interface Server {
